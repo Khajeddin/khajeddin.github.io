@@ -2,5 +2,5 @@ module.exports = {
   siteMetadata: {
     title: "Negar Khajeddin's Site",
   },
-  plugins: [],
+  plugins: ['gatsby-plugin-postcss'],
 };
