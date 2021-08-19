@@ -29,10 +29,10 @@ const Logo: React.FC = () => {
 
   return (
     <Styled.Logo to="/">
-      <Styled.Image>
-        <Img fluid={logoImage} alt={logoTitle} />
-      </Styled.Image>
-      <Styled.Text>{logoTitle}</Styled.Text>
+      <figure className="w-16 h-16 mr-3 border border-teal-400 rounded-full">
+        <Img className="border-4 border-white rounded-full" fluid={logoImage} alt={logoTitle} />
+      </figure>
+      <h1 className="text-lg">{logoTitle}</h1>
     </Styled.Logo>
   );
 };
