@@ -1,15 +1,16 @@
-import * as React from 'react';
-import { ReactElement } from 'react';
-import { Helmet } from 'react-helmet';
+import React from 'react';
 
-export default function Component(): ReactElement {
+import Layout from 'components/Layout';
+import SEO from 'components/SEO';
+import HeroBanner from 'components/HeroBanner';
+
+const IndexPage: React.FC = () => {
   return (
-    <>
-      <Helmet>
-        <title>Negar Khajeddin</title>
-        <meta name="description" content="Negar Khajeddin's Portfolio" />
-      </Helmet>
-      <div className="italic">Hello world</div>
-    </>
+    <Layout>
+      <SEO title="About Me" />
+      <HeroBanner />
+    </Layout>
   );
-}
+};
+
+export default IndexPage;
