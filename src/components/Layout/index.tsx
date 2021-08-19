@@ -7,7 +7,6 @@ import Footer from 'components/Footer';
 
 import 'assets/styles/global.css';
 import GlobalStyles from 'assets/styles/globalStyles';
-import * as Styled from './styles';
 
 interface Props {
   children: React.ReactNode;
@@ -28,7 +27,7 @@ const Layout: React.FC<Props> = ({ children }) => {
     <>
       <GlobalStyles />
       <AnimatePresence exitBeforeEnter>
-        <Styled.Layout>
+        <main className="flex flex-col min-h-screen">
           <Header siteTitle={data.site.siteMetadata.title} />
           <motion.div
             initial={{ y: 30, opacity: 0 }}
@@ -39,7 +38,7 @@ const Layout: React.FC<Props> = ({ children }) => {
             {children}
             <Footer />
           </motion.div>
-        </Styled.Layout>
+        </main>
       </AnimatePresence>
     </>
   );

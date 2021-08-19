@@ -18,10 +18,3 @@ export const Wrapper = styled.div<StyledProps>`
   ${({ center }) => center && tw`text-center`};
 `;
 
-export const Title = styled.h3`
-  ${tw`text-md mt-1 font-semibold`};
-`;
-
-export const Content = styled.p`
-  ${tw`mt-1`};
-`;

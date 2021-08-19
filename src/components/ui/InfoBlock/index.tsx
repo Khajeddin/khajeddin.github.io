@@ -16,8 +16,8 @@ const InfoBlock: React.FC<Props> = ({ icon, title, content, center }) => (
       <Icon icon={icon} />
     </Styled.Icon>
     <Styled.Wrapper center={center}>
-      <Styled.Title>{title}</Styled.Title>
-      <Styled.Content>{content}</Styled.Content>
+      <h3 className="text-md mt-1 font-semibold">{title}</h3>
+      <p className="mt-1">{content}</p>
     </Styled.Wrapper>
   </Styled.InfoBlock>
 );
