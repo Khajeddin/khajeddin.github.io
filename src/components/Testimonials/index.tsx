@@ -1,13 +1,14 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import Img from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import Loadable from '@loadable/component';
 
 import Container from 'components/ui/Container';
 import TitleSection from 'components/ui/TitleSection';
 import FormatHtml from 'components/utils/FormatHtml';
+import { IGatsbyImageData } from 'gatsby-plugin-image';
 
-import { SectionTitle, ImageSharpFluid } from 'helpers/definitions';
+import { SectionTitle } from 'helpers/definitions';
 
 const Carousel = Loadable(() => import('components/ui/Carousel'));
 
@@ -19,7 +20,7 @@ interface Testimonial {
       title: string;
       cover: {
         childImageSharp: {
-          fluid: ImageSharpFluid;
+          gatsbyImageData: IGatsbyImageData;
         };
       };
     };
@@ -44,9 +45,7 @@ const Testimonials: React.FC = () => {
               title
               cover {
                 childImageSharp {
-                  fluid(maxWidth: 80) {
-                    ...GatsbyImageSharpFluid
-                  }
+                  gatsbyImageData(layout: FULL_WIDTH)
                 }
               }
             }
@@ -74,7 +73,7 @@ const Testimonials: React.FC = () => {
             return (
               <div className="flex flex-col items-center text-center mt-4" key={id}>
                 <figure className="w-16 h-16 mx-auto border border-green-200 rounded-full">
-                  <Img className="border-4 border-white rounded-full" fluid={cover.childImageSharp.fluid} alt={title} />
+                  <GatsbyImage className="border-4 border-white rounded-full" image={cover.childImageSharp.gatsbyImageData} alt={title} />
                 </figure>
                 <h3 className="font-semibold my-4">{title}</h3>
                 <FormatHtml content={html} />

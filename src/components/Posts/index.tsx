@@ -1,13 +1,14 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import Img from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import Link from 'gatsby-link';
 import { motion } from 'framer-motion';
+import { IGatsbyImageData } from 'gatsby-plugin-image';
 
 import Container from 'components/ui/Container';
 import TitleSection from 'components/ui/TitleSection';
 
-import { SectionTitle, ImageSharpFluid } from 'helpers/definitions';
+import { SectionTitle } from 'helpers/definitions';
 
 interface Post {
   node: {
@@ -22,7 +23,7 @@ interface Post {
       tags: string[];
       cover: {
         childImageSharp: {
-          fluid: ImageSharpFluid;
+          gatsbyImageData: IGatsbyImageData;
         };
       };
     };
@@ -56,9 +57,7 @@ const Posts: React.FC = () => {
               tags
               cover {
                 childImageSharp {
-                  fluid(maxWidth: 800) {
-                    ...GatsbyImageSharpFluid
-                  }
+                  gatsbyImageData(layout: FULL_WIDTH)
                 }
               }
             }
@@ -88,7 +87,7 @@ const Posts: React.FC = () => {
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 1 }}>
                   <div className="w-full h-full rounded-lg flex flex-col overflow-hidden border border-gray-300">
                     <figure className="w-full">
-                      <Img fluid={cover.childImageSharp.fluid} alt={title} />
+                      <GatsbyImage image={cover.childImageSharp.gatsbyImageData} alt={title} />
                     </figure>
                     <div className="p-4 text-indigo-900">
                       <h3 className="text-xs text-indigo-500">{date}</h3>
