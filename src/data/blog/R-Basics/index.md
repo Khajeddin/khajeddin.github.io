@@ -52,7 +52,7 @@ Variables can be numerical or character-based.
     y <- "hello"
     ```
 - Defining vectors:
-    ```
+    ```r
     z <- c(0.3, 2.5) # Creates a numeric vector like [0.3, 2.5]
 
     z <- c(True, Fakse) # Creates a logical vector like
@@ -67,13 +67,13 @@ Variables can be numerical or character-based.
 
     ```
     you can also create an empty vector with the following vector() function. It gets two arguments, the fisrt one is Data Type and the second one is the length of the vector.  For example:
-    ```
+    ```r
     z <- vector("numeric", 5L) # Creates a numeric vector [0, 0, 0, 0, 0]
 
     z <- vector("character", 5L) # Creates a character vector ["", "", "", "", ""]
     ```
 - Defining Lists:
-    ```
+    ```r
     > x <- list(2.5, 4L, "hello", F, 7+0i)
     > x
     [[1]]
@@ -103,12 +103,12 @@ In order to define an empty martix we can use the following expression:
 In order to 
 ## Commenting
  R only supports single-line comments, and any string that starts with # is interpreted as comment. this string can be at the begining of a line, like:
-```
+```r
 # This is a comment!!
 ```
 Or it can start in the middle of a line (following an R expression), like:
 
-```
+```r
 x <- 6 # This is a comment!!
 ```
 
