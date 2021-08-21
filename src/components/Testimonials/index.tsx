@@ -9,8 +9,6 @@ import FormatHtml from 'components/utils/FormatHtml';
 
 import { SectionTitle, ImageSharpFluid } from 'helpers/definitions';
 
-import * as Styled from './styles';
-
 const Carousel = Loadable(() => import('components/ui/Carousel'));
 
 interface Testimonial {
@@ -64,7 +62,7 @@ const Testimonials: React.FC = () => {
   return (
     <Container section>
       <TitleSection title={sectionTitle.title} subtitle={sectionTitle.subtitle} center />
-      <Styled.Testimonials>
+      <div className="max-w-screen-sm mx-auto w-full px-0 sm:px-16 mb-4">
         <Carousel>
           {testimonials.map((item) => {
             const {
@@ -74,17 +72,17 @@ const Testimonials: React.FC = () => {
             } = item.node;
 
             return (
-              <Styled.Testimonial key={id}>
-                <Styled.Image>
-                  <Img fluid={cover.childImageSharp.fluid} alt={title} />
-                </Styled.Image>
-                <Styled.Title>{title}</Styled.Title>
+              <div className="flex flex-col items-center text-center mt-4" key={id}>
+                <figure className="w-16 h-16 mx-auto border border-teal-400 rounded-full">
+                  <Img className="border-4 border-white rounded-full" fluid={cover.childImageSharp.fluid} alt={title} />
+                </figure>
+                <h3 className="font-semibold my-4">{title}</h3>
                 <FormatHtml content={html} />
-              </Styled.Testimonial>
+              </div>
             );
           })}
         </Carousel>
-      </Styled.Testimonials>
+      </div>
     </Container>
   );
 };
