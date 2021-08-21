@@ -97,7 +97,7 @@ const Posts: React.FC = () => {
                     </div>
                     <div className="p-4 pt-2 mt-auto">
                       {tags.map((item) => (
-                        <span className="text-xs text-indigo-900 border border-teal-400 rounded-full px-2 py-1 mr-2" key={item}>
+                        <span className="text-xs text-indigo-900 border border-green-200 rounded-full px-2 py-1 mr-2" key={item}>
                           {item}
                         </span>
                       ))}

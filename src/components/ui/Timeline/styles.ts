@@ -10,7 +10,7 @@ export const Timeline = styled.div`
 `;
 
 export const Date = styled.div`
-  ${tw`text-xs border  border-teal-400 rounded-full px-2`};
+  ${tw`text-xs border  border-green-200 rounded-full px-2`};
   width: fit-content;
 `;
 

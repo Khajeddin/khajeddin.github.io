@@ -6,7 +6,7 @@ export interface StyledProps {
 }
 
 export const Bar = styled.div<StyledProps>`
-  ${tw`h-2 bg-teal-400`};
+  ${tw`h-2 bg-green-200`};
   width: ${({ percentage }) => `${percentage}%`};
 `;
 

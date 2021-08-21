@@ -73,7 +73,7 @@ const Testimonials: React.FC = () => {
 
             return (
               <div className="flex flex-col items-center text-center mt-4" key={id}>
-                <figure className="w-16 h-16 mx-auto border border-teal-400 rounded-full">
+                <figure className="w-16 h-16 mx-auto border border-green-200 rounded-full">
                   <Img className="border-4 border-white rounded-full" fluid={cover.childImageSharp.fluid} alt={title} />
                 </figure>
                 <h3 className="font-semibold my-4">{title}</h3>
