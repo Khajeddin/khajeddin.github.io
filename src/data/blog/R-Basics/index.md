@@ -7,7 +7,6 @@ date: '2021-08-19'
 tags: ['Tutoial', 'R', 'datascience']
 published: true
 ---
-# R Basics
 
 ## Data types
 - __Object:__ Everything in R is called "an object". R has 5 basic atomic classes of objects which are:
@@ -16,6 +15,7 @@ published: true
     - Integer
     - Complex
     - Logical (True/False)
+
 - __Vector:__ The most basic object, which contains one or more of a single type of object (Hint: a vector cannot contain two/more than one types of objects; every object in a vector should be of the same class) 
 
 - __List:__ is a sequence of objects that can contain objects from different classes (Technically a _list_ is a _vector_ which can contain objects from different classes).
@@ -41,13 +41,13 @@ __Undefined Vale__ or __Missing Value__ is shown as __NaN__ (Not a Number), for 
 ```
 
 ## Defining variables
-Variables can be numerical or character-based.
+- Defing a single variable:
 
-- To assign a numerical value to a variable, use the following expression:  
+    To assign a numerical value to a variable, use the following expression:  
     ```r
     x <- 5
     ```
-- To assign a character string to a variable, use the following expression:  
+    To assign a character string to a variable, use the following expression:  
     ```r
     y <- "hello"
     ```
@@ -91,8 +91,8 @@ Variables can be numerical or character-based.
     [[5]]
     [1] 7+0i
     ```
-- Defining Martices:
-In order to define an empty martix we can use the following expression:
+- Defining Martices:  
+    In order to define an empty martix we can use the following expression:
     ```
     > x <- matrix(nrow = 2, ncol = 4)
     > x
@@ -100,7 +100,41 @@ In order to define an empty martix we can use the following expression:
     [1,]   NA   NA   NA   NA
     [2,]   NA   NA   NA   NA
     ```
-In order to 
+    We can also assign a vector to a matrix. Hint: martices are constructed __column-wise__. Therefore, a matrix starts from the upper left entry and ends with the lower right one. For example:
+    ```
+    > x <- matrix(1:8, nrow = 2, ncol = 4)
+    > x
+        [,1] [,2] [,3] [,4]
+    [1,]    1    3    5    7
+    [2,]    2    4    6    8
+    ```
+    Another way of creating a matrix is to directly create it from a vector using dim() function:
+    ```
+    > v <- 1:12
+    > v
+    [1]  1  2  3  4  5  6  7  8  9 10 11 12
+    > dim(v) <- c(3, 4)
+    > v
+        [,1] [,2] [,3] [,4]
+    [1,]    1    4    7   10
+    [2,]    2    5    8   11
+    [3,]    3    6    9   12
+    ```
+    Binding columns or rows is yet another way of defining a matrix:
+    ```
+    > x <- 1:3
+    > y <- 14:16
+    > cbind(x, y) # Binding columns to create a matrix
+        x  y
+    [1,] 1 14
+    [2,] 2 15
+    [3,] 3 16
+    > rbind(x, y) # Binding rows to create a matrix
+    [,1] [,2] [,3]
+    x    1    2    3
+    y   14   15   16
+    ```
+
 ## Commenting
  R only supports single-line comments, and any string that starts with # is interpreted as comment. this string can be at the begining of a line, like:
 ```
