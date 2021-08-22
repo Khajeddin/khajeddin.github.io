@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import tw from 'tailwind.macro';
+import tw from 'twin.macro';
 
 export interface StyledProps {
   center?: boolean;
@@ -11,7 +11,7 @@ export const InfoBlock = styled.div<StyledProps>`
 `;
 
 export const Icon = styled.span`
-  ${tw`flex items-center justify-center w-10 h-10 text-indigo-500 border border-teal-400 rounded-full mb-2`};
+  ${tw`flex items-center justify-center w-10 h-10 text-indigo-500 border border-green-200 rounded-full mb-2`};
 `;
 
 export const Wrapper = styled.div<StyledProps>`

@@ -1,15 +1,14 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import Img from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import Loadable from '@loadable/component';
 
 import Container from 'components/ui/Container';
 import TitleSection from 'components/ui/TitleSection';
 import FormatHtml from 'components/utils/FormatHtml';
+import { IGatsbyImageData } from 'gatsby-plugin-image';
 
-import { SectionTitle, ImageSharpFluid } from 'helpers/definitions';
-
-import * as Styled from './styles';
+import { SectionTitle } from 'helpers/definitions';
 
 const Carousel = Loadable(() => import('components/ui/Carousel'));
 
@@ -21,7 +20,7 @@ interface Testimonial {
       title: string;
       cover: {
         childImageSharp: {
-          fluid: ImageSharpFluid;
+          gatsbyImageData: IGatsbyImageData;
         };
       };
     };
@@ -46,9 +45,7 @@ const Testimonials: React.FC = () => {
               title
               cover {
                 childImageSharp {
-                  fluid(maxWidth: 80) {
-                    ...GatsbyImageSharpFluid
-                  }
+                  gatsbyImageData(layout: FULL_WIDTH)
                 }
               }
             }
@@ -64,7 +61,7 @@ const Testimonials: React.FC = () => {
   return (
     <Container section>
       <TitleSection title={sectionTitle.title} subtitle={sectionTitle.subtitle} center />
-      <Styled.Testimonials>
+      <div className="max-w-screen-sm mx-auto w-full px-0 sm:px-16 mb-4">
         <Carousel>
           {testimonials.map((item) => {
             const {
@@ -74,17 +71,17 @@ const Testimonials: React.FC = () => {
             } = item.node;
 
             return (
-              <Styled.Testimonial key={id}>
-                <Styled.Image>
-                  <Img fluid={cover.childImageSharp.fluid} alt={title} />
-                </Styled.Image>
-                <Styled.Title>{title}</Styled.Title>
+              <div className="flex flex-col items-center text-center mt-4" key={id}>
+                <figure className="w-16 h-16 mx-auto border border-green-200 rounded-full">
+                  <GatsbyImage className="border-4 border-white rounded-full" image={cover.childImageSharp.gatsbyImageData} alt={title} />
+                </figure>
+                <h3 className="font-semibold my-4">{title}</h3>
                 <FormatHtml content={html} />
-              </Styled.Testimonial>
+              </div>
             );
           })}
         </Carousel>
-      </Styled.Testimonials>
+      </div>
     </Container>
   );
 };

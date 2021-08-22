@@ -1,15 +1,14 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import Img from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import Link from 'gatsby-link';
 import { motion } from 'framer-motion';
+import { IGatsbyImageData } from 'gatsby-plugin-image';
 
 import Container from 'components/ui/Container';
 import TitleSection from 'components/ui/TitleSection';
 
-import { SectionTitle, ImageSharpFluid } from 'helpers/definitions';
-
-import * as Styled from './styles';
+import { SectionTitle } from 'helpers/definitions';
 
 interface Post {
   node: {
@@ -24,7 +23,7 @@ interface Post {
       tags: string[];
       cover: {
         childImageSharp: {
-          fluid: ImageSharpFluid;
+          gatsbyImageData: IGatsbyImageData;
         };
       };
     };
@@ -58,9 +57,7 @@ const Posts: React.FC = () => {
               tags
               cover {
                 childImageSharp {
-                  fluid(maxWidth: 800) {
-                    ...GatsbyImageSharpFluid
-                  }
+                  gatsbyImageData(layout: FULL_WIDTH)
                 }
               }
             }
@@ -76,7 +73,7 @@ const Posts: React.FC = () => {
   return (
     <Container section>
       <TitleSection title={sectionTitle.title} subtitle={sectionTitle.subtitle} center />
-      <Styled.Posts>
+      <div className="w-full flex flex-wrap">
         {posts.map((item) => {
           const {
             id,
@@ -85,30 +82,32 @@ const Posts: React.FC = () => {
           } = item.node;
 
           return (
-            <Styled.Post key={id}>
+            <div className="w-full sm:w-1/2 p-3" key={id}>
               <Link to={slug}>
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 1 }}>
-                  <Styled.Card>
-                    <Styled.Image>
-                      <Img fluid={cover.childImageSharp.fluid} alt={title} />
-                    </Styled.Image>
-                    <Styled.Content>
-                      <Styled.Date>{date}</Styled.Date>
-                      <Styled.Title>{title}</Styled.Title>
-                      <Styled.Description>{description}</Styled.Description>
-                    </Styled.Content>
-                    <Styled.Tags>
+                  <div className="w-full h-full rounded-lg flex flex-col overflow-hidden border border-gray-300">
+                    <figure className="w-full">
+                      <GatsbyImage image={cover.childImageSharp.gatsbyImageData} alt={title} />
+                    </figure>
+                    <div className="p-4 text-indigo-900">
+                      <h3 className="text-xs text-indigo-500">{date}</h3>
+                      <h3 className="font-semibold mb-4">{title}</h3>
+                      <p>{description}</p>
+                    </div>
+                    <div className="p-4 pt-2 mt-auto">
                       {tags.map((item) => (
-                        <Styled.Tag key={item}>{item}</Styled.Tag>
+                        <span className="text-xs text-indigo-900 border border-green-200 rounded-full px-2 py-1 mr-2" key={item}>
+                          {item}
+                        </span>
                       ))}
-                    </Styled.Tags>
-                  </Styled.Card>
+                    </div>
+                  </div>
                 </motion.div>
               </Link>
-            </Styled.Post>
+            </div>
           );
         })}
-      </Styled.Posts>
+      </div>
     </Container>
   );
 };

@@ -1,10 +1,9 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import Img from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
+import { Link } from 'gatsby';
+import { IGatsbyImageData } from 'gatsby-plugin-image';
 
-import * as Styled from './styles';
-
-import { ImageSharpFluid } from 'helpers/definitions';
 
 const Logo: React.FC = () => {
   const { site, placeholderImage } = useStaticQuery(graphql`
@@ -16,24 +15,22 @@ const Logo: React.FC = () => {
       }
       placeholderImage: file(relativePath: { eq: "profile.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 80) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData(layout: FULL_WIDTH)
         }
       }
     }
   `);
 
   const logoTitle: string = site.siteMetadata.title;
-  const logoImage: ImageSharpFluid = placeholderImage.childImageSharp.fluid;
+  const logoImage: IGatsbyImageData = placeholderImage.childImageSharp.gatsbyImageData;
 
   return (
-    <Styled.Logo to="/">
-      <figure className="w-16 h-16 mr-3 border border-teal-400 rounded-full">
-        <Img className="border-4 border-white rounded-full" fluid={logoImage} alt={logoTitle} />
+    <Link className="flex items-center mr-auto text-indigo-900 hover:text-indigo-900" to="/">
+      <figure className="w-16 h-16 mr-3 border border-green-200 rounded-full">
+        <GatsbyImage className="border-4 border-white rounded-full" image={logoImage} alt={logoTitle} />
       </figure>
       <h1 className="text-lg">{logoTitle}</h1>
-    </Styled.Logo>
+    </Link>
   );
 };
 

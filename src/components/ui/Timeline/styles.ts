@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import tw from 'tailwind.macro';
+import tw from 'twin.macro';
 
 export const Timeline = styled.div`
   ${tw`flex flex-col sm:flex-row w-full p-4 relative border-l border-indigo-200`};
@@ -10,7 +10,7 @@ export const Timeline = styled.div`
 `;
 
 export const Date = styled.div`
-  ${tw`text-xs border  border-teal-400 rounded-full px-2`};
+  ${tw`text-xs border  border-green-200 rounded-full px-2`};
   width: fit-content;
 `;
 
