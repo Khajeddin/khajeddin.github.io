@@ -15,10 +15,10 @@ export default createGlobalStyle`
   }
   
   .format-html {
-    ${tw`mt-2 px-2 text-gray-900`};
+    ${tw`px-2 mt-2 text-gray-900`};
 
     p {
-      ${tw`leading-relaxed pt-4 text-justify`}
+      ${tw`pt-4 leading-relaxed text-justify`}
       text-indent: 1rem;
     }
 
@@ -31,15 +31,15 @@ export default createGlobalStyle`
     }
 
     h2 {
-      ${tw`font-medium text-xl pt-6`};
+      ${tw`pt-6 text-xl font-medium`};
     }
 
     h3 {
-        ${tw`font-medium text-lg pt-5`};
+        ${tw`pt-5 text-lg font-medium`};
     }
 
     h4 {
-        ${tw`font-medium text-base pt-5`};
+        ${tw`pt-5 text-base font-medium`};
     }
 
     a {
@@ -47,13 +47,13 @@ export default createGlobalStyle`
     }
 
     ul {
-        ${tw`list-disc pb-10 text-justify`};
+        ${tw`pb-10 pl-10 text-justify list-disc`};
 
         text-indent: 0.5rem;
     }
 
     ol {
-        ${tw`list-decimal pb-10 text-justify`};
+        ${tw`pb-10 pl-10 text-justify list-decimal`};
 
         text-indent: 0.5rem;
     }
