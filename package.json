@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-personal-website-starter",
+  "name": "khajeddin.com",
   "private": true,
-  "description": "Gatsby Markdown Personal Website Starter, using Typescript, Styled Components, Tailwindcss and Framer Motion.",
+  "description": "Personal site",
   "version": "0.1.0",
-  "author": "Saimir Kapaj",
+  "author": "Negar Khajeddin",
   "dependencies": {
     "@deckdeckgo/highlight-code": "^3.3.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
@@ -51,6 +51,7 @@
     "@types/react-helmet": "^6.1.2",
     "@types/react-slick": "^0.23.5",
     "@types/styled-components": "^5.1.12",
+    "gh-pages": "^3.2.3",
     "prettier": "^2.3.2"
   },
   "keywords": [
@@ -61,19 +62,20 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
+    "build": "env GATSBY_TELEMETRY_DISABLED=1 gatsby build",
+    "develop": "env GATSBY_TELEMETRY_DISABLED=1 gatsby develop",
+    "deploy": "npm run clean && npm run build && gh-pages -d public -b main --remove '**/*'",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean",
+    "serve": "env GATSBY_TELEMETRY_DISABLED=1 gatsby serve",
+    "clean": "env GATSBY_TELEMETRY_DISABLED=1 gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/SaimirKapaj/gatsby-markdown-typescript-personal-website"
+    "url": "https://github.com/khajeddin/khajeddin.github.io"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/khajeddin/khajeddin.github.io/issues"
   }
 }
