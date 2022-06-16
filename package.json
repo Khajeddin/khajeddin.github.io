@@ -64,6 +64,7 @@
   "scripts": {
     "build": "env GATSBY_TELEMETRY_DISABLED=1 gatsby build",
     "develop": "env GATSBY_TELEMETRY_DISABLED=1 gatsby develop",
+    "gh-pages-action": "gh-pages -d public -b main -x -r https://$GH_TOKEN@github.com/khajeddin/khajeddin.github.io.git --remove '**/*'",
     "deploy": "npm run clean && npm run build && gh-pages -d public -b main --remove '**/*'",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
